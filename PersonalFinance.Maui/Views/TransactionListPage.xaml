@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PersonalFinance.Maui.Views.TransactionListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Tüm İşlemler"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource PageBackground}">
+
+    <Grid
+        RowDefinitions="Auto,Auto,*"
+        Padding="22"
+        RowSpacing="18">
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+
+            <Button
+                Grid.Column="0"
+                Text="←"
+                Clicked="OnBackClicked"
+                BackgroundColor="{StaticResource Secondary}"
+                TextColor="{StaticResource PrimaryDark}"
+                FontSize="20"
+                FontAttributes="Bold"
+                Padding="0"
+                HeightRequest="42"
+                WidthRequest="42"
+                CornerRadius="21"
+                VerticalOptions="Center" />
+
+            <VerticalStackLayout
+                Grid.Column="1"
+                Spacing="3"
+                Margin="12,0,0,0"
+                VerticalOptions="Center">
+
+                <Label
+                    Text="Tüm İşlemler"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource PrimaryDark}" />
+
+                <Label
+                    Text="Gelir ve gider hareketlerinizin detaylı listesi."
+                    FontSize="13"
+                    TextColor="{StaticResource TextSecondary}" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- FİLTRE KARTI -->
+        <Frame
+            Grid.Row="1"
+            BackgroundColor="{StaticResource CardBackground}"
+            Padding="18"
+            CornerRadius="24"
+            HasShadow="True"
+            BorderColor="Transparent"
+            MaximumWidthRequest="520"
+            HorizontalOptions="Center">
+
+            <VerticalStackLayout Spacing="16">
+
+                <!-- Tür Filtreleri -->
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        Text="İşlem Türü"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource TextSecondary}" />
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+
+                        <Frame
+                            Grid.Column="0"
+                            BackgroundColor="{StaticResource Secondary}"
+                            BorderColor="{StaticResource BorderSoft}"
+                            CornerRadius="16"
+                            Padding="10,8"
+                            HasShadow="False">
+
+                            <RadioButton
+                                x:Name="AllRadio"
+                                GroupName="FilterType"
+                                Content="Tümü"
+                                IsChecked="True"
+                                FontSize="13"
+                                TextColor="{StaticResource TextPrimary}"
+                                CheckedChanged="OnFilterChanged" />
+                        </Frame>
+
+                        <Frame
+                            Grid.Column="1"
+                            BackgroundColor="#ECFDF5"
+                            BorderColor="#A7F3D0"
+                            CornerRadius="16"
+                            Padding="10,8"
+                            HasShadow="False">
+
+                            <RadioButton
+                                x:Name="IncomeRadio"
+                                GroupName="FilterType"
+                                Content="Gelir"
+                                FontSize="13"
+                                TextColor="{StaticResource TextPrimary}"
+                                CheckedChanged="OnFilterChanged" />
+                        </Frame>
+
+                        <Frame
+                            Grid.Column="2"
+                            BackgroundColor="#FEF2F2"
+                            BorderColor="#FECACA"
+                            CornerRadius="16"
+                            Padding="10,8"
+                            HasShadow="False">
+
+                            <RadioButton
+                                x:Name="ExpenseRadio"
+                                GroupName="FilterType"
+                                Content="Gider"
+                                FontSize="13"
+                                TextColor="{StaticResource TextPrimary}"
+                                CheckedChanged="OnFilterChanged" />
+                        </Frame>
+
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Kategori -->
+                <VerticalStackLayout Spacing="6">
+
+                    <Label
+                        Text="Kategori"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource TextSecondary}" />
+
+                    <Frame
+                        BackgroundColor="{StaticResource InputBackground}"
+                        BorderColor="{StaticResource BorderSoft}"
+                        CornerRadius="16"
+                        Padding="14,0"
+                        HeightRequest="52"
+                        HasShadow="False">
+
+                        <Picker
+                            x:Name="CategoryFilterPicker"
+                            Title="Kategori seçin"
+                            TitleColor="{StaticResource TextMuted}"
+                            TextColor="{StaticResource TextPrimary}"
+                            BackgroundColor="Transparent"
+                            SelectedIndexChanged="OnFilterChanged"
+                            VerticalOptions="Center">
+
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Tümü</x:String>
+                                    <x:String>Market</x:String>
+                                    <x:String>Maaş</x:String>
+                                    <x:String>Fatura</x:String>
+                                    <x:String>Eğlence</x:String>
+                                    <x:String>Ulaşım</x:String>
+                                    <x:String>Diğer</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Frame>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- LİSTE -->
+        <Grid
+            Grid.Row="2"
+            MaximumWidthRequest="520"
+            HorizontalOptions="Center">
+
+            <!-- EMPTY VIEW -->
+            <VerticalStackLayout
+                x:Name="EmptyViewLayout"
+                Padding="40"
+                Spacing="10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsVisible="False">
+
+                <Label
+                    Text="💸"
+                    FontSize="42"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    Text="Filtrelere uygun işlem bulunamadı."
+                    FontSize="14"
+                    TextColor="{StaticResource TextSecondary}"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    Text="Filtreleri değiştirerek tekrar deneyin."
+                    FontSize="12"
+                    TextColor="{StaticResource TextMuted}"
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- COLLECTION -->
+            <CollectionView
+                x:Name="TransactionsCollectionView"
+                SelectionMode="Single"
+                SelectionChanged="OnTransactionSelected">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Frame
+                            BackgroundColor="{StaticResource CardBackground}"
+                            Padding="16,14"
+                            CornerRadius="22"
+                            HasShadow="True"
+                            BorderColor="Transparent">
+
+                            <Grid
+                                ColumnDefinitions="Auto,*,Auto"
+                                ColumnSpacing="14">
+
+                                <!-- İkon -->
+                                <Frame
+                                    Grid.Column="0"
+                                    HeightRequest="44"
+                                    WidthRequest="44"
+                                    CornerRadius="22"
+                                    BackgroundColor="{StaticResource Secondary}"
+                                    Padding="0"
+                                    HasShadow="False"
+                                    BorderColor="Transparent"
+                                    VerticalOptions="Center">
+
+                                    <Label
+                                        Text="{Binding CategoryIcon}"
+                                        FontSize="19"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Frame>
+
+                                <!-- Bilgi -->
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Spacing="3"
+                                    VerticalOptions="Center">
+
+                                    <Label
+                                        Text="{Binding Title}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource TextPrimary}" />
+
+                                    <Label
+                                        Text="{Binding DateFormatted}"
+                                        FontSize="11"
+                                        TextColor="{StaticResource TextSecondary}" />
+                                </VerticalStackLayout>
+
+                                <!-- Tutar -->
+                                <VerticalStackLayout
+                                    Grid.Column="2"
+                                    Spacing="2"
+                                    VerticalOptions="Center">
+
+                                    <Label
+                                        Text="{Binding AmountFormatted}"
+                                        TextColor="{Binding AmountColor}"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        HorizontalTextAlignment="End" />
+
+                                    <Label
+                                        Text="{Binding Category}"
+                                        FontSize="10"
+                                        TextColor="{StaticResource TextMuted}"
+                                        HorizontalTextAlignment="End" />
+                                </VerticalStackLayout>
+
+                            </Grid>
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

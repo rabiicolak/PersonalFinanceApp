@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PersonalFinance.Maui.Views.AddTransactionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Yeni İşlem Ekle"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource PageBackground}">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="22"
+            Spacing="18"
+            MaximumWidthRequest="480"
+            HorizontalOptions="Center">
+
+            <Grid ColumnDefinitions="Auto,*" Margin="0,8,0,0">
+                <Button
+                    Grid.Column="0"
+                    Text="←"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource PrimaryDark}"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Padding="0"
+                    HeightRequest="42"
+                    WidthRequest="42"
+                    CornerRadius="21"
+                    VerticalOptions="Center" />
+
+                <VerticalStackLayout Grid.Column="1" Spacing="3" Margin="12,0,0,0" VerticalOptions="Center">
+                    <Label
+                        Text="Yeni İşlem Ekle"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource PrimaryDark}" />
+
+                    <Label
+                        Text="Gelir, gider veya tasarruf hareketinizi kaydedin."
+                        FontSize="13"
+                        TextColor="{StaticResource TextSecondary}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Frame
+                BackgroundColor="{StaticResource CardBackground}"
+                Padding="22"
+                CornerRadius="24"
+                HasShadow="True"
+                BorderColor="Transparent">
+
+                <VerticalStackLayout Spacing="18">
+
+                    <VerticalStackLayout Spacing="8">
+                        <Label
+                            Text="İşlem Türü *"
+                            FontSize="13"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontAttributes="Bold" />
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <Frame
+                                Grid.Column="0"
+                                BackgroundColor="#ECFDF5"
+                                BorderColor="#A7F3D0"
+                                CornerRadius="16"
+                                Padding="12,8"
+                                HasShadow="False">
+
+                                <RadioButton
+                                    x:Name="IncomeRadio"
+                                    GroupName="TransactionType"
+                                    Content="Gelir"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    FontSize="14"
+                                    VerticalOptions="Center" />
+                            </Frame>
+
+                            <Frame
+                                Grid.Column="1"
+                                BackgroundColor="#FEF2F2"
+                                BorderColor="#FECACA"
+                                CornerRadius="16"
+                                Padding="12,8"
+                                HasShadow="False">
+
+                                <RadioButton
+                                    x:Name="ExpenseRadio"
+                                    GroupName="TransactionType"
+                                    Content="Gider"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    FontSize="14"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Başlık *"
+                            FontSize="13"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontAttributes="Bold" />
+
+                        <Frame
+                            BackgroundColor="{StaticResource InputBackground}"
+                            BorderColor="{StaticResource BorderSoft}"
+                            CornerRadius="16"
+                            Padding="14,0"
+                            HeightRequest="52"
+                            HasShadow="False">
+
+                            <Entry
+                                x:Name="TitleEntry"
+                                Placeholder="Örn. Market alışverişi"
+                                TextColor="{StaticResource TextPrimary}"
+                                PlaceholderColor="{StaticResource TextMuted}"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Tutar (₺) *"
+                            FontSize="13"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontAttributes="Bold" />
+
+                        <Frame
+                            BackgroundColor="{StaticResource InputBackground}"
+                            BorderColor="{StaticResource BorderSoft}"
+                            CornerRadius="16"
+                            Padding="14,0"
+                            HeightRequest="52"
+                            HasShadow="False">
+
+                            <Entry
+                                x:Name="AmountEntry"
+                                Placeholder="0,00"
+                                Keyboard="Numeric"
+                                TextColor="{StaticResource TextPrimary}"
+                                PlaceholderColor="{StaticResource TextMuted}"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label
+                                Text="Kategori"
+                                FontSize="13"
+                                TextColor="{StaticResource TextSecondary}"
+                                FontAttributes="Bold" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Picker
+                                    x:Name="CategoryPicker"
+                                    Title="Kategori"
+                                    TitleColor="{StaticResource TextMuted}"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    BackgroundColor="Transparent"
+                                    VerticalOptions="Center">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Market</x:String>
+                                            <x:String>Maaş</x:String>
+                                            <x:String>Fatura</x:String>
+                                            <x:String>Eğlence</x:String>
+                                            <x:String>Ulaşım</x:String>
+                                            <x:String>Diğer</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label
+                                Text="Tarih"
+                                FontSize="13"
+                                TextColor="{StaticResource TextSecondary}"
+                                FontAttributes="Bold" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <DatePicker
+                                    x:Name="TransactionDatePicker"
+                                    Format="dd.MM.yyyy"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    BackgroundColor="Transparent"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Frame
+                        BackgroundColor="{StaticResource Secondary}"
+                        BorderColor="{StaticResource BorderSoft}"
+                        CornerRadius="16"
+                        Padding="12,8"
+                        HasShadow="False">
+
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <CheckBox
+                                x:Name="IsSavingCheckBox"
+                                Color="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+
+                            <VerticalStackLayout Spacing="1" VerticalOptions="Center">
+                                <Label
+                                    Text="Tasarruf işlemi mi?"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    FontSize="14"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="Bu işlem tasarruf hareketi olarak işaretlenir."
+                                    TextColor="{StaticResource TextSecondary}"
+                                    FontSize="11" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Açıklama"
+                            FontSize="13"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontAttributes="Bold" />
+
+                        <Frame
+                            BackgroundColor="{StaticResource InputBackground}"
+                            BorderColor="{StaticResource BorderSoft}"
+                            CornerRadius="16"
+                            Padding="14,8"
+                            HeightRequest="110"
+                            HasShadow="False">
+
+                            <Editor
+                                x:Name="DescriptionEditor"
+                                Placeholder="İşlem detaylarını yazabilirsiniz..."
+                                TextColor="{StaticResource TextPrimary}"
+                                PlaceholderColor="{StaticResource TextMuted}"
+                                VerticalOptions="Fill" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button
+                Text="Kaydet"
+                Clicked="OnSaveClicked"
+                HeightRequest="54"
+                CornerRadius="18"
+                Margin="0,4,0,22" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

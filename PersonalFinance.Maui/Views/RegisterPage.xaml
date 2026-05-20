@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PersonalFinance.Maui.Views.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Kayıt Ol"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource PageBackground}">
+
+    <Grid>
+        <ScrollView>
+
+            <VerticalStackLayout
+                Padding="24"
+                Spacing="22"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                MaximumWidthRequest="440">
+
+                <!-- Üst Alan -->
+                <VerticalStackLayout
+                    Spacing="10"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,4">
+
+                    <Frame
+                        BackgroundColor="{StaticResource Secondary}"
+                        HeightRequest="82"
+                        WidthRequest="82"
+                        CornerRadius="41"
+                        Padding="0"
+                        HasShadow="True"
+                        BorderColor="Transparent">
+
+                        <Label
+                            Text="✨"
+                            FontSize="36"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Frame>
+
+                    <Label
+                        Text="Hesap Oluştur"
+                        FontSize="34"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource PrimaryDark}"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Finansal takibinizi başlatmak için ücretsiz hesabınızı oluşturun."
+                        FontSize="14"
+                        TextColor="{StaticResource TextSecondary}"
+                        HorizontalTextAlignment="Center"
+                        MaximumWidthRequest="340" />
+                </VerticalStackLayout>
+
+                <!-- Form Kartı -->
+                <Frame
+                    BackgroundColor="{StaticResource CardBackground}"
+                    Padding="26"
+                    CornerRadius="24"
+                    HasShadow="True"
+                    BorderColor="Transparent"
+                    HorizontalOptions="Fill">
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- Ad Soyad -->
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Ad Soyad"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryDark}" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Entry
+                                    x:Name="FullNameEntry"
+                                    Placeholder="Adınızı girin"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <!-- Email -->
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="E-posta"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryDark}" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Entry
+                                    x:Name="EmailEntry"
+                                    Placeholder="ornek@email.com"
+                                    Keyboard="Email"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <!-- Şifre -->
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Şifre"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryDark}" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Entry
+                                    x:Name="PasswordEntry"
+                                    Placeholder="Şifre oluşturun"
+                                    IsPassword="True"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <!-- Şifre Tekrar -->
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Şifre Tekrar"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryDark}" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Entry
+                                    x:Name="ConfirmPasswordEntry"
+                                    Placeholder="Şifrenizi tekrar girin"
+                                    IsPassword="True"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <!-- Buton -->
+                        <Button
+                            Text="Kayıt Ol"
+                            Clicked="OnRegisterClicked"
+                            HeightRequest="52"
+                            CornerRadius="16"
+                            Margin="0,10,0,0" />
+
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+    </Grid>
+</ContentPage>

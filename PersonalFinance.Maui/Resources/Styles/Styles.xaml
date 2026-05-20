@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Sayfa Genel Stili -->
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}" />
+    </Style>
+
+    <!-- Label Genel Stili -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
+    <!-- Button Genel Stili -->
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="Padding" Value="16,12" />
+    </Style>
+
+    <!-- Entry Genel Stili -->
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextMuted}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+    </Style>
+
+    <!-- Editor Genel Stili -->
+    <Style TargetType="Editor">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextMuted}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
+    <!-- Picker Genel Stili -->
+    <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="TitleColor" Value="{StaticResource TextMuted}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="HeightRequest" Value="48" />
+    </Style>
+
+    <!-- DatePicker Genel Stili -->
+    <Style TargetType="DatePicker">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="Format" Value="dd.MM.yyyy" />
+    </Style>
+
+    <!-- CheckBox Genel Stili -->
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource Primary}" />
+    </Style>
+
+    <!-- RadioButton Genel Stili -->
+    <Style TargetType="RadioButton">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- Frame Genel Kart Stili -->
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackground}" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="Padding" Value="18" />
+    </Style>
+
+    <!-- ProgressBar Genel Stili -->
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource Primary}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray200}" />
+        <Setter Property="HeightRequest" Value="8" />
+    </Style>
+
+    <!-- NavigationPage Genel Stili -->
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="BarTextColor" Value="White" />
+    </Style>
+
+</ResourceDictionary>

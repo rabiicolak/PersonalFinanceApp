@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PersonalFinance.Maui.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Giriş Yap"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource PageBackground}">
+
+    <Grid>
+
+        <ScrollView>
+
+            <VerticalStackLayout
+                Padding="24"
+                Spacing="22"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                MaximumWidthRequest="440">
+
+                <!-- LOGO / BAŞLIK -->
+
+                <VerticalStackLayout
+                    Spacing="10"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,4">
+
+                    <Frame
+                        BackgroundColor="{StaticResource Secondary}"
+                        HeightRequest="82"
+                        WidthRequest="82"
+                        CornerRadius="41"
+                        Padding="0"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="💸"
+                            FontSize="36"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+
+                    </Frame>
+
+                    <Label
+                        Text="Finansör"
+                        FontSize="36"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource PrimaryDark}"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Gelir, gider ve tasarruflarınızı tek ekrandan yönetin."
+                        FontSize="14"
+                        TextColor="{StaticResource TextSecondary}"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        MaximumWidthRequest="360" />
+
+                </VerticalStackLayout>
+
+                <!-- LOGIN CARD -->
+
+                <Frame
+                    BackgroundColor="{StaticResource CardBackground}"
+                    Padding="26"
+                    CornerRadius="24"
+                    HasShadow="True"
+                    BorderColor="Transparent"
+                    HorizontalOptions="Fill">
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- TEXT -->
+
+                        <VerticalStackLayout Spacing="4">
+
+                            <Label
+                                Text="Hoş geldiniz"
+                                FontSize="22"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource TextPrimary}" />
+
+                            <Label
+                                Text="Hesabınıza giriş yaparak finansal özetinizi görüntüleyin."
+                                FontSize="13"
+                                TextColor="{StaticResource TextSecondary}" />
+
+                        </VerticalStackLayout>
+
+                        <!-- EMAIL -->
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="E-posta"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryDark}" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Entry
+                                    x:Name="EmailEntry"
+                                    Placeholder="ornek@email.com"
+                                    Keyboard="Email"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    VerticalOptions="Center" />
+
+                            </Frame>
+
+                        </VerticalStackLayout>
+
+                        <!-- PASSWORD -->
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Şifre"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryDark}" />
+
+                            <Frame
+                                BackgroundColor="{StaticResource InputBackground}"
+                                BorderColor="{StaticResource BorderSoft}"
+                                CornerRadius="16"
+                                Padding="14,0"
+                                HeightRequest="52"
+                                HasShadow="False">
+
+                                <Entry
+                                    x:Name="PasswordEntry"
+                                    Placeholder="Şifrenizi girin"
+                                    IsPassword="True"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    VerticalOptions="Center" />
+
+                            </Frame>
+
+                        </VerticalStackLayout>
+
+                        <!-- LOGIN BUTTON + LOADING -->
+
+                        <VerticalStackLayout
+                            Spacing="10"
+                            Margin="0,8,0,0">
+
+                            <Button
+                                Text="Giriş Yap"
+                                Clicked="OnLoginClicked"
+                                HeightRequest="52"
+                                CornerRadius="16" />
+
+                            <VerticalStackLayout
+                                x:Name="LoadingLayout"
+                                IsVisible="False"
+                                Spacing="6"
+                                HorizontalOptions="Center">
+
+                                <ActivityIndicator
+                                    x:Name="LoginActivityIndicator"
+                                    IsRunning="False"
+                                    Color="{StaticResource Primary}"
+                                    HeightRequest="28"
+                                    WidthRequest="28" />
+
+                                <Label
+                                    Text="Giriş yapılıyor..."
+                                    FontSize="12"
+                                    TextColor="{StaticResource TextSecondary}"
+                                    HorizontalOptions="Center" />
+
+                            </VerticalStackLayout>
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- REGISTER -->
+
+                <Frame
+                    BackgroundColor="#FDFBFF"
+                    BorderColor="{StaticResource BorderSoft}"
+                    CornerRadius="18"
+                    Padding="16,12"
+                    HasShadow="False"
+                    HorizontalOptions="Center">
+
+                    <HorizontalStackLayout
+                        Spacing="5"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="Hesabınız yok mu?"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontSize="14"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Text="Kayıt olun"
+                            TextColor="{StaticResource Primary}"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            VerticalOptions="Center">
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRegisterClicked" />
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+                    </HorizontalStackLayout>
+
+                </Frame>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

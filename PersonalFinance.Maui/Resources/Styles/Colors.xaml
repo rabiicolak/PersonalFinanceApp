@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Ana Marka Renkleri -->
+    <Color x:Key="Primary">#6D28D9</Color>
+    <Color x:Key="PrimaryDark">#4C1D95</Color>
+    <Color x:Key="PrimaryLight">#A78BFA</Color>
+    <Color x:Key="Secondary">#EDE9FE</Color>
+    <Color x:Key="Tertiary">#8B5CF6</Color>
+
+    <!-- Arka Plan -->
+    <Color x:Key="PageBackground">#F4F0FF</Color>
+    <Color x:Key="CardBackground">#FFFFFF</Color>
+    <Color x:Key="InputBackground">#F5F3FF</Color>
+
+    <!-- Metin Renkleri -->
+    <Color x:Key="TextPrimary">#1E1B4B</Color>
+    <Color x:Key="TextSecondary">#7C7598</Color>
+    <Color x:Key="TextMuted">#A39FBA</Color>
+
+    <!-- Finans Renkleri -->
+    <Color x:Key="IncomeColor">#10B981</Color>
+    <Color x:Key="ExpenseColor">#EF4444</Color>
+    <Color x:Key="SavingColor">#F59E0B</Color>
+
+    <!-- Kenarlık / Gölge -->
+    <Color x:Key="BorderSoft">#E9D5FF</Color>
+    <Color x:Key="ShadowSoft">#EDE9FE</Color>
+
+    <!-- Sistem Renkleri -->
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="OffBlack">#1F1F1F</Color>
+    <Color x:Key="Gray100">#F3F4F6</Color>
+    <Color x:Key="Gray200">#E5E7EB</Color>
+    <Color x:Key="Gray500">#6B7280</Color>
+
+    <!-- Brush Tanımları -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}" />
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}" />
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />
+    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}" />
+
+    <SolidColorBrush x:Key="PageBackgroundBrush" Color="{StaticResource PageBackground}" />
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{StaticResource CardBackground}" />
+    <SolidColorBrush x:Key="InputBackgroundBrush" Color="{StaticResource InputBackground}" />
+
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}" />
+    <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMuted}" />
+
+    <SolidColorBrush x:Key="IncomeBrush" Color="{StaticResource IncomeColor}" />
+    <SolidColorBrush x:Key="ExpenseBrush" Color="{StaticResource ExpenseColor}" />
+    <SolidColorBrush x:Key="SavingBrush" Color="{StaticResource SavingColor}" />
+
+    <SolidColorBrush x:Key="BorderSoftBrush" Color="{StaticResource BorderSoft}" />
+    <SolidColorBrush x:Key="ShadowSoftBrush" Color="{StaticResource ShadowSoft}" />
+
+</ResourceDictionary>

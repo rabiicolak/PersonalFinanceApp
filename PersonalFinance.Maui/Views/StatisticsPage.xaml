@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PersonalFinance.Maui.Views.StatisticsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Finansal Analiz"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource PageBackground}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="22" MaximumWidthRequest="760" HorizontalOptions="Center">
+
+            <Grid ColumnDefinitions="Auto,*">
+                <Button Text="←" Clicked="OnBackClicked"
+                        BackgroundColor="{StaticResource Secondary}"
+                        TextColor="{StaticResource PrimaryDark}"
+                        FontSize="22" FontAttributes="Bold"
+                        HeightRequest="44" WidthRequest="44" CornerRadius="22" Padding="0" />
+
+                <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" Spacing="3">
+                    <Label Text="Finansal Analiz" FontSize="30" FontAttributes="Bold" TextColor="{StaticResource PrimaryDark}" />
+                    <Label Text="Finansal özet ve kategori bazlı harcama analizi." FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout x:Name="EmptyViewLayout" Padding="60" Spacing="12" HorizontalOptions="Center" IsVisible="False">
+                <Label Text="📊" FontSize="64" HorizontalOptions="Center" />
+                <Label Text="Henüz analiz edilecek işlem bulunmuyor." FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                <Label Text="Grafikleri görmek için yeni işlemler ekleyin." FontSize="13" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="MainContentGrid" Spacing="22">
+
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="14" RowSpacing="14">
+
+                    <Frame Grid.Row="0" Grid.Column="0" Padding="18" CornerRadius="26" HasShadow="True" BorderColor="Transparent">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" BackgroundColor="#E0F2FE" Padding="0" HasShadow="False">
+                                <Label Text="📋" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
+                                <Label Text="Toplam İşlem" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TotalTransactionsLabel" Text="0" FontSize="22" FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="0" Grid.Column="1" Padding="18" CornerRadius="26" HasShadow="True" BorderColor="Transparent">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" BackgroundColor="#FEF3C7" Padding="0" HasShadow="False">
+                                <Label Text="⭐" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
+                                <Label Text="Tasarruf" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="SavingTransactionsLabel" Text="0" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource IncomeColor}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="0" Padding="18" CornerRadius="26" HasShadow="True" BorderColor="Transparent">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" BackgroundColor="#D1FAE5" Padding="0" HasShadow="False">
+                                <Label Text="📈" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
+                                <Label Text="Toplam Gelir" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TotalIncomeLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{StaticResource IncomeColor}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="1" Padding="18" CornerRadius="26" HasShadow="True" BorderColor="Transparent">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" BackgroundColor="#FEE2E2" Padding="0" HasShadow="False">
+                                <Label Text="📉" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
+                                <Label Text="Toplam Gider" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TotalExpenseLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{StaticResource ExpenseColor}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="0" Padding="18" CornerRadius="26" HasShadow="True" BorderColor="Transparent">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" BackgroundColor="#EDE9FE" Padding="0" HasShadow="False">
+                                <Label Text="👛" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
+                                <Label Text="Net Bakiye" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="NetBalanceLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{StaticResource PrimaryDark}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="1" Padding="18" CornerRadius="26" HasShadow="True" BorderColor="Transparent">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" BackgroundColor="#FFEDD5" Padding="0" HasShadow="False">
+                                <Label Text="💰" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
+                                <Label Text="En Çok Gider" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TopCategoryLabel" Text="Yok" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Primary}" LineBreakMode="TailTruncation" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                </Grid>
+
+                <Frame Padding="24" CornerRadius="30" HasShadow="True" BorderColor="Transparent">
+                    <VerticalStackLayout Spacing="18">
+                        <Label Text="Grafiksel Finans Analizi" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="Gelir / gider dağılımınızı ayrı grafik ekranında görüntüleyin." FontSize="13" TextColor="{StaticResource TextSecondary}" />
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                            <Frame HeightRequest="54" WidthRequest="54" CornerRadius="27" BackgroundColor="{StaticResource Secondary}" Padding="0" HasShadow="False">
+                                <Label Text="📊" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label Text="Premium grafik görünümü" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Donut grafik ve oran analizleri ayrı sayfada gösterilir." FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Button Text="📈 Grafiksel Analizi Görüntüle"
+                                Clicked="OnOpenGraphicalAnalysisClicked"
+                                HeightRequest="52"
+                                CornerRadius="18" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Padding="22" CornerRadius="30" HasShadow="True" BorderColor="Transparent">
+                    <VerticalStackLayout Spacing="18">
+                        <Label Text="Kategori Bazlı Gider Analizi" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}" />
+
+                        <CollectionView x:Name="CategoryExpensesCollectionView" SelectionMode="None">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="18" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout Spacing="7">
+                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                            <HorizontalStackLayout Spacing="8">
+                                                <Label Text="{Binding CategoryIcon}" FontSize="16" />
+                                                <Label Text="{Binding Category}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                            </HorizontalStackLayout>
+
+                                            <Label Grid.Column="2" Text="{Binding AmountFormatted}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource ExpenseColor}" />
+                                        </Grid>
+
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                            <Frame HeightRequest="10" CornerRadius="5" Padding="0" BackgroundColor="#EEF2F6" BorderColor="Transparent" HasShadow="False">
+                                                <ProgressBar Progress="{Binding Percentage}" ProgressColor="{StaticResource Primary}" HeightRequest="10" />
+                                            </Frame>
+
+                                            <Label Grid.Column="1" Text="{Binding PercentageFormatted}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}" />
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <Label Text="Harcamalarınız kategori bazında analiz edilmiştir."
+                               FontSize="11"
+                               FontAttributes="Italic"
+                               TextColor="{StaticResource TextMuted}"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

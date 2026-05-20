@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PersonalFinance.Maui.Views.GraphicalAnalysisPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Grafiksel Analiz"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource PageBackground}">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="22"
+            Spacing="24"
+            MaximumWidthRequest="700"
+            HorizontalOptions="Center">
+
+            <!-- HEADER -->
+
+            <Grid ColumnDefinitions="Auto,*">
+
+                <Button
+                    Text="←"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource PrimaryDark}"
+                    HeightRequest="44"
+                    WidthRequest="44"
+                    CornerRadius="22"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Padding="0" />
+
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    Margin="14,0,0,0"
+                    Spacing="3">
+
+                    <Label
+                        Text="Grafiksel Finans Analizi"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource PrimaryDark}" />
+
+                    <Label
+                        Text="Gelir ve gider dağılımınızın görsel analizi."
+                        FontSize="13"
+                        TextColor="{StaticResource TextSecondary}" />
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <!-- DONUT CARD -->
+
+            <Frame
+                Padding="28"
+                CornerRadius="32"
+                BackgroundColor="{StaticResource CardBackground}"
+                HasShadow="True"
+                BorderColor="Transparent">
+
+                <VerticalStackLayout Spacing="24">
+
+                    <Label
+                        Text="Gelir / Gider Dağılımı"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource TextPrimary}" />
+
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="22">
+
+                        <!-- DONUT -->
+
+                        <Grid
+                            HeightRequest="260"
+                            WidthRequest="260"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+
+                            <GraphicsView
+                                x:Name="DonutGraphicsView"
+                                HeightRequest="260"
+                                WidthRequest="260" />
+
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Spacing="4">
+
+                                <Label
+                                    Text="Toplam Akış"
+                                    FontSize="13"
+                                    TextColor="{StaticResource TextSecondary}"
+                                    HorizontalTextAlignment="Center" />
+
+                                <Label
+                                    x:Name="TotalFlowLabel"
+                                    Text="0 ₺"
+                                    FontSize="28"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource TextPrimary}"
+                                    HorizontalTextAlignment="Center" />
+
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                        <!-- LEGEND -->
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="18"
+                            VerticalOptions="Center"
+                            WidthRequest="130">
+
+                            <Frame
+                                BackgroundColor="#ECFDF5"
+                                BorderColor="#A7F3D0"
+                                CornerRadius="20"
+                                Padding="14,12"
+                                HasShadow="False">
+
+                                <VerticalStackLayout Spacing="6">
+
+                                    <HorizontalStackLayout Spacing="8">
+
+                                        <Frame
+                                            HeightRequest="12"
+                                            WidthRequest="12"
+                                            CornerRadius="6"
+                                            Padding="0"
+                                            BackgroundColor="{StaticResource IncomeColor}"
+                                            HasShadow="False" />
+
+                                        <Label
+                                            Text="Gelir"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            TextColor="{StaticResource TextPrimary}" />
+
+                                    </HorizontalStackLayout>
+
+                                    <Label
+                                        x:Name="IncomePercentageLabel"
+                                        Text="Gelir: %0"
+                                        FontSize="13"
+                                        TextColor="{StaticResource TextSecondary}" />
+
+                                </VerticalStackLayout>
+
+                            </Frame>
+
+                            <Frame
+                                BackgroundColor="#FEF2F2"
+                                BorderColor="#FECACA"
+                                CornerRadius="20"
+                                Padding="14,12"
+                                HasShadow="False">
+
+                                <VerticalStackLayout Spacing="6">
+
+                                    <HorizontalStackLayout Spacing="8">
+
+                                        <Frame
+                                            HeightRequest="12"
+                                            WidthRequest="12"
+                                            CornerRadius="6"
+                                            Padding="0"
+                                            BackgroundColor="{StaticResource ExpenseColor}"
+                                            HasShadow="False" />
+
+                                        <Label
+                                            Text="Gider"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            TextColor="{StaticResource TextPrimary}" />
+
+                                    </HorizontalStackLayout>
+
+                                    <Label
+                                        x:Name="ExpensePercentageLabel"
+                                        Text="Gider: %0"
+                                        FontSize="13"
+                                        TextColor="{StaticResource TextSecondary}" />
+
+                                </VerticalStackLayout>
+
+                            </Frame>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
