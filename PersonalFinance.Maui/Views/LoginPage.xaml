@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="PersonalFinance.Maui.Views.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Giriş Yap"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{StaticResource PageBackground}">
+    BackgroundColor="{DynamicResource PageBackground}">
 
     <Grid>
 
@@ -26,7 +26,7 @@
                     Margin="0,20,0,4">
 
                     <Frame
-                        BackgroundColor="{StaticResource Secondary}"
+                        BackgroundColor="{DynamicResource Secondary}"
                         HeightRequest="82"
                         WidthRequest="82"
                         CornerRadius="41"
@@ -47,13 +47,13 @@
                         Text="Finansör"
                         FontSize="36"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource PrimaryDark}"
+                        TextColor="{DynamicResource PrimaryDark}"
                         HorizontalOptions="Center" />
 
                     <Label
                         Text="Gelir, gider ve tasarruflarınızı tek ekrandan yönetin."
                         FontSize="14"
-                        TextColor="{StaticResource TextSecondary}"
+                        TextColor="{DynamicResource TextSecondary}"
                         HorizontalTextAlignment="Center"
                         HorizontalOptions="Center"
                         MaximumWidthRequest="360" />
@@ -63,7 +63,7 @@
                 <!-- LOGIN CARD -->
 
                 <Frame
-                    BackgroundColor="{StaticResource CardBackground}"
+                    BackgroundColor="{DynamicResource CardBackground}"
                     Padding="26"
                     CornerRadius="24"
                     HasShadow="True"
@@ -80,12 +80,12 @@
                                 Text="Hoş geldiniz"
                                 FontSize="22"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource TextPrimary}" />
+                                TextColor="{DynamicResource TextPrimary}" />
 
                             <Label
                                 Text="Hesabınıza giriş yaparak finansal özetinizi görüntüleyin."
                                 FontSize="13"
-                                TextColor="{StaticResource TextSecondary}" />
+                                TextColor="{DynamicResource TextSecondary}" />
 
                         </VerticalStackLayout>
 
@@ -97,11 +97,11 @@
                                 Text="E-posta"
                                 FontSize="13"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource PrimaryDark}" />
+                                TextColor="{DynamicResource PrimaryDark}" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
                                 HeightRequest="52"
@@ -111,8 +111,8 @@
                                     x:Name="EmailEntry"
                                     Placeholder="ornek@email.com"
                                     Keyboard="Email"
-                                    TextColor="{StaticResource TextPrimary}"
-                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
+                                    PlaceholderColor="{DynamicResource TextMuted}"
                                     VerticalOptions="Center" />
 
                             </Frame>
@@ -127,11 +127,11 @@
                                 Text="Şifre"
                                 FontSize="13"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource PrimaryDark}" />
+                                TextColor="{DynamicResource PrimaryDark}" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
                                 HeightRequest="52"
@@ -141,8 +141,8 @@
                                     x:Name="PasswordEntry"
                                     Placeholder="Şifrenizi girin"
                                     IsPassword="True"
-                                    TextColor="{StaticResource TextPrimary}"
-                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
+                                    PlaceholderColor="{DynamicResource TextMuted}"
                                     VerticalOptions="Center" />
 
                             </Frame>
@@ -170,14 +170,14 @@
                                 <ActivityIndicator
                                     x:Name="LoginActivityIndicator"
                                     IsRunning="False"
-                                    Color="{StaticResource Primary}"
+                                    Color="{DynamicResource Primary}"
                                     HeightRequest="28"
                                     WidthRequest="28" />
 
                                 <Label
                                     Text="Giriş yapılıyor..."
                                     FontSize="12"
-                                    TextColor="{StaticResource TextSecondary}"
+                                    TextColor="{DynamicResource TextSecondary}"
                                     HorizontalOptions="Center" />
 
                             </VerticalStackLayout>
@@ -192,7 +192,7 @@
 
                 <Frame
                     BackgroundColor="#FDFBFF"
-                    BorderColor="{StaticResource BorderSoft}"
+                    BorderColor="{DynamicResource BorderSoft}"
                     CornerRadius="18"
                     Padding="16,12"
                     HasShadow="False"
@@ -204,13 +204,13 @@
 
                         <Label
                             Text="Hesabınız yok mu?"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontSize="14"
                             VerticalOptions="Center" />
 
                         <Label
                             Text="Kayıt olun"
-                            TextColor="{StaticResource Primary}"
+                            TextColor="{DynamicResource Primary}"
                             FontAttributes="Bold"
                             FontSize="14"
                             VerticalOptions="Center">

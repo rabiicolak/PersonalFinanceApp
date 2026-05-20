@@ -5,31 +5,72 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Finansal Analiz"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{StaticResource PageBackground}">
+    BackgroundColor="{DynamicResource PageBackground}">
 
     <ScrollView>
         <VerticalStackLayout Padding="22" Spacing="22" MaximumWidthRequest="760" HorizontalOptions="Center">
 
             <Grid ColumnDefinitions="Auto,*">
                 <Button Text="←" Clicked="OnBackClicked"
-                        BackgroundColor="{StaticResource Secondary}"
-                        TextColor="{StaticResource PrimaryDark}"
+                        BackgroundColor="{DynamicResource Secondary}"
+                        TextColor="{DynamicResource PrimaryDark}"
                         FontSize="22" FontAttributes="Bold"
                         HeightRequest="44" WidthRequest="44" CornerRadius="22" Padding="0" />
 
                 <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" Spacing="3">
-                    <Label Text="Finansal Analiz" FontSize="30" FontAttributes="Bold" TextColor="{StaticResource PrimaryDark}" />
-                    <Label Text="Finansal özet ve kategori bazlı harcama analizi." FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                    <Label Text="Finansal Analiz" FontSize="30" FontAttributes="Bold" TextColor="{DynamicResource PrimaryDark}" />
+                    <Label Text="Finansal özet ve kategori bazlı harcama analizi." FontSize="13" TextColor="{DynamicResource TextSecondary}" />
                 </VerticalStackLayout>
             </Grid>
 
             <VerticalStackLayout x:Name="EmptyViewLayout" Padding="60" Spacing="12" HorizontalOptions="Center" IsVisible="False">
                 <Label Text="📊" FontSize="64" HorizontalOptions="Center" />
-                <Label Text="Henüz analiz edilecek işlem bulunmuyor." FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
-                <Label Text="Grafikleri görmek için yeni işlemler ekleyin." FontSize="13" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                <Label Text="Henüz analiz edilecek işlem bulunmuyor." FontSize="16" FontAttributes="Bold" TextColor="{DynamicResource TextPrimary}" HorizontalOptions="Center" />
+                <Label Text="Grafikleri görmek için yeni işlemler ekleyin." FontSize="13" TextColor="{DynamicResource TextMuted}" HorizontalOptions="Center" />
             </VerticalStackLayout>
 
-            <VerticalStackLayout x:Name="MainContentGrid" Spacing="22">
+            <VerticalStackLayout x:Name="MainContentGrid" Spacing="22" Opacity="0">
+
+                <!-- Finansal İçgörü (Financial Insights) Card -->
+                <Frame
+                    x:Name="InsightCard"
+                    Padding="20"
+                    CornerRadius="24"
+                    HasShadow="True"
+                    BorderColor="{DynamicResource BorderSoft}"
+                    BackgroundColor="#FAF5FF"
+                    IsVisible="False">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                        <Frame
+                            HeightRequest="44"
+                            WidthRequest="44"
+                            CornerRadius="22"
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False"
+                            BorderColor="{DynamicResource BorderSoft}"
+                            VerticalOptions="Start">
+                            <Label
+                                Text="💡"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Frame>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                            <Label
+                                Text="Finansal İçgörü"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#1E1B4B" />
+                            <Label
+                                x:Name="InsightTextLabel"
+                                Text="Verileriniz analiz ediliyor..."
+                                FontSize="12"
+                                TextColor="#6B5E86"
+                                LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
 
                 <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="14" RowSpacing="14">
 
@@ -39,7 +80,7 @@
                                 <Label Text="📋" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
-                                <Label Text="Toplam İşlem" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
+                                <Label Text="Toplam İşlem" FontSize="11" TextColor="{DynamicResource TextSecondary}" FontAttributes="Bold" />
                                 <Label x:Name="TotalTransactionsLabel" Text="0" FontSize="22" FontAttributes="Bold" />
                             </VerticalStackLayout>
                         </Grid>
@@ -51,8 +92,8 @@
                                 <Label Text="⭐" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
-                                <Label Text="Tasarruf" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
-                                <Label x:Name="SavingTransactionsLabel" Text="0" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource IncomeColor}" />
+                                <Label Text="Tasarruf" FontSize="11" TextColor="{DynamicResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="SavingTransactionsLabel" Text="0" FontSize="22" FontAttributes="Bold" TextColor="{DynamicResource IncomeColor}" />
                             </VerticalStackLayout>
                         </Grid>
                     </Frame>
@@ -63,8 +104,8 @@
                                 <Label Text="📈" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
-                                <Label Text="Toplam Gelir" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
-                                <Label x:Name="TotalIncomeLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{StaticResource IncomeColor}" />
+                                <Label Text="Toplam Gelir" FontSize="11" TextColor="{DynamicResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TotalIncomeLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{DynamicResource IncomeColor}" />
                             </VerticalStackLayout>
                         </Grid>
                     </Frame>
@@ -75,8 +116,8 @@
                                 <Label Text="📉" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
-                                <Label Text="Toplam Gider" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
-                                <Label x:Name="TotalExpenseLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{StaticResource ExpenseColor}" />
+                                <Label Text="Toplam Gider" FontSize="11" TextColor="{DynamicResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TotalExpenseLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{DynamicResource ExpenseColor}" />
                             </VerticalStackLayout>
                         </Grid>
                     </Frame>
@@ -87,8 +128,8 @@
                                 <Label Text="👛" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
-                                <Label Text="Net Bakiye" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
-                                <Label x:Name="NetBalanceLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{StaticResource PrimaryDark}" />
+                                <Label Text="Net Bakiye" FontSize="11" TextColor="{DynamicResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="NetBalanceLabel" Text="0 ₺" FontSize="19" FontAttributes="Bold" TextColor="{DynamicResource PrimaryDark}" />
                             </VerticalStackLayout>
                         </Grid>
                     </Frame>
@@ -99,8 +140,8 @@
                                 <Label Text="💰" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="1" Margin="14,0,0,0" VerticalOptions="Center">
-                                <Label Text="En Çok Gider" FontSize="11" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold" />
-                                <Label x:Name="TopCategoryLabel" Text="Yok" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Primary}" LineBreakMode="TailTruncation" />
+                                <Label Text="En Çok Gider" FontSize="11" TextColor="{DynamicResource TextSecondary}" FontAttributes="Bold" />
+                                <Label x:Name="TopCategoryLabel" Text="Yok" FontSize="13" FontAttributes="Bold" TextColor="{DynamicResource Primary}" LineBreakMode="TailTruncation" />
                             </VerticalStackLayout>
                         </Grid>
                     </Frame>
@@ -109,17 +150,17 @@
 
                 <Frame Padding="24" CornerRadius="30" HasShadow="True" BorderColor="Transparent">
                     <VerticalStackLayout Spacing="18">
-                        <Label Text="Grafiksel Finans Analizi" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
-                        <Label Text="Gelir / gider dağılımınızı ayrı grafik ekranında görüntüleyin." FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                        <Label Text="Grafiksel Finans Analizi" FontSize="18" FontAttributes="Bold" TextColor="{DynamicResource TextPrimary}" />
+                        <Label Text="Gelir / gider dağılımınızı ayrı grafik ekranında görüntüleyin." FontSize="13" TextColor="{DynamicResource TextSecondary}" />
 
                         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
-                            <Frame HeightRequest="54" WidthRequest="54" CornerRadius="27" BackgroundColor="{StaticResource Secondary}" Padding="0" HasShadow="False">
+                            <Frame HeightRequest="54" WidthRequest="54" CornerRadius="27" BackgroundColor="{DynamicResource Secondary}" Padding="0" HasShadow="False">
                                 <Label Text="📊" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
 
                             <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
-                                <Label Text="Premium grafik görünümü" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
-                                <Label Text="Donut grafik ve oran analizleri ayrı sayfada gösterilir." FontSize="12" TextColor="{StaticResource TextMuted}" />
+                                <Label Text="Premium grafik görünümü" FontSize="14" FontAttributes="Bold" TextColor="{DynamicResource TextPrimary}" />
+                                <Label Text="Donut grafik ve oran analizleri ayrı sayfada gösterilir." FontSize="12" TextColor="{DynamicResource TextMuted}" />
                             </VerticalStackLayout>
                         </Grid>
 
@@ -132,7 +173,7 @@
 
                 <Frame Padding="22" CornerRadius="30" HasShadow="True" BorderColor="Transparent">
                     <VerticalStackLayout Spacing="18">
-                        <Label Text="Kategori Bazlı Gider Analizi" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}" />
+                        <Label Text="Kategori Bazlı Gider Analizi" FontSize="16" FontAttributes="Bold" TextColor="{DynamicResource TextSecondary}" />
 
                         <CollectionView x:Name="CategoryExpensesCollectionView" SelectionMode="None">
                             <CollectionView.ItemsLayout>
@@ -145,18 +186,18 @@
                                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
                                             <HorizontalStackLayout Spacing="8">
                                                 <Label Text="{Binding CategoryIcon}" FontSize="16" />
-                                                <Label Text="{Binding Category}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                                <Label Text="{Binding Category}" FontSize="13" FontAttributes="Bold" TextColor="{DynamicResource TextPrimary}" />
                                             </HorizontalStackLayout>
 
-                                            <Label Grid.Column="2" Text="{Binding AmountFormatted}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource ExpenseColor}" />
+                                            <Label Grid.Column="2" Text="{Binding AmountFormatted}" FontSize="12" FontAttributes="Bold" TextColor="{DynamicResource ExpenseColor}" />
                                         </Grid>
 
                                         <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
                                             <Frame HeightRequest="10" CornerRadius="5" Padding="0" BackgroundColor="#EEF2F6" BorderColor="Transparent" HasShadow="False">
-                                                <ProgressBar Progress="{Binding Percentage}" ProgressColor="{StaticResource Primary}" HeightRequest="10" />
+                                                <ProgressBar Progress="{Binding Percentage}" ProgressColor="{DynamicResource Primary}" HeightRequest="10" />
                                             </Frame>
 
-                                            <Label Grid.Column="1" Text="{Binding PercentageFormatted}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}" />
+                                            <Label Grid.Column="1" Text="{Binding PercentageFormatted}" FontSize="11" FontAttributes="Bold" TextColor="{DynamicResource TextSecondary}" />
                                         </Grid>
                                     </VerticalStackLayout>
                                 </DataTemplate>
@@ -166,7 +207,7 @@
                         <Label Text="Harcamalarınız kategori bazında analiz edilmiştir."
                                FontSize="11"
                                FontAttributes="Italic"
-                               TextColor="{StaticResource TextMuted}"
+                               TextColor="{DynamicResource TextMuted}"
                                HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>

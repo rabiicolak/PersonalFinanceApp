@@ -20,6 +20,8 @@ public partial class StatisticsPage : ContentPage
         await LoadStatisticsAsync();
     }
 
+    private bool _isNavigating = false;
+
     private async Task LoadStatisticsAsync()
     {
         var transactions = await _apiService.GetTransactions(_user.Id);
@@ -28,6 +30,14 @@ public partial class StatisticsPage : ContentPage
         {
             EmptyViewLayout.IsVisible = true;
             MainContentGrid.IsVisible = false;
+            
+            // Animation for empty view
+            EmptyViewLayout.Opacity = 0;
+            EmptyViewLayout.TranslationY = 15;
+            await Task.WhenAll(
+                EmptyViewLayout.FadeTo(1, 300, Easing.CubicOut),
+                EmptyViewLayout.TranslateTo(0, 0, 300, Easing.CubicOut)
+            );
             return;
         }
 
@@ -87,16 +97,73 @@ public partial class StatisticsPage : ContentPage
             .ToList();
 
         CategoryExpensesCollectionView.ItemsSource = categoryItems;
+
+        // Dynamic Financial Insights Calculation
+        if (totalIncome == 0 && totalExpense == 0)
+        {
+            InsightCard.IsVisible = false;
+        }
+        else
+        {
+            InsightCard.IsVisible = true;
+            string insightText = "";
+
+            if (totalExpense > totalIncome)
+            {
+                insightText = "Bu dönemde giderleriniz gelirinizi aşmış görünüyor. Bütçenizi dengelemek için harcama kategorilerinizi kontrol edebilirsiniz. ";
+            }
+            else if (totalIncome > 0 && totalExpense <= totalIncome * 0.5m)
+            {
+                insightText = "Harika! Gelirinizin yarısından fazlasını tasarruf ettiniz veya bütçenizde tuttunuz. Finansal durumunuz oldukça güçlü. ";
+            }
+            else
+            {
+                insightText = "Geliriniz giderlerinizi karşılıyor, finansal durumunuz dengeli görünüyor. ";
+            }
+
+            if (topCategory != null && topCategory.Amount > 0)
+            {
+                insightText += $"En yüksek harcama yaptığınız kategori: {topCategory.Category}. Bu kategorideki harcamalarınızı optimize etmeyi düşünebilirsiniz.";
+            }
+
+            InsightTextLabel.Text = insightText;
+        }
+
+        // Animate content entrance
+        MainContentGrid.Opacity = 0;
+        MainContentGrid.TranslationY = 15;
+        await Task.WhenAll(
+            MainContentGrid.FadeTo(1, 350, Easing.CubicOut),
+            MainContentGrid.TranslateTo(0, 0, 350, Easing.CubicOut)
+        );
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        if (_isNavigating) return;
+        _isNavigating = true;
+        try
+        {
+            await Navigation.PopAsync();
+        }
+        finally
+        {
+            _isNavigating = false;
+        }
     }
 
     private async void OnOpenGraphicalAnalysisClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new GraphicalAnalysisPage(_user));
+        if (_isNavigating) return;
+        _isNavigating = true;
+        try
+        {
+            await Navigation.PushAsync(new GraphicalAnalysisPage(_user));
+        }
+        finally
+        {
+            _isNavigating = false;
+        }
     }
 
     private static string FormatMoney(decimal amount)

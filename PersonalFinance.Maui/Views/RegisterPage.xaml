@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="PersonalFinance.Maui.Views.RegisterPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Kayıt Ol"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{StaticResource PageBackground}">
+    BackgroundColor="{DynamicResource PageBackground}">
 
     <Grid>
         <ScrollView>
@@ -24,7 +24,7 @@
                     Margin="0,20,0,4">
 
                     <Frame
-                        BackgroundColor="{StaticResource Secondary}"
+                        BackgroundColor="{DynamicResource Secondary}"
                         HeightRequest="82"
                         WidthRequest="82"
                         CornerRadius="41"
@@ -43,20 +43,20 @@
                         Text="Hesap Oluştur"
                         FontSize="34"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource PrimaryDark}"
+                        TextColor="{DynamicResource PrimaryDark}"
                         HorizontalOptions="Center" />
 
                     <Label
                         Text="Finansal takibinizi başlatmak için ücretsiz hesabınızı oluşturun."
                         FontSize="14"
-                        TextColor="{StaticResource TextSecondary}"
+                        TextColor="{DynamicResource TextSecondary}"
                         HorizontalTextAlignment="Center"
                         MaximumWidthRequest="340" />
                 </VerticalStackLayout>
 
                 <!-- Form Kartı -->
                 <Frame
-                    BackgroundColor="{StaticResource CardBackground}"
+                    BackgroundColor="{DynamicResource CardBackground}"
                     Padding="26"
                     CornerRadius="24"
                     HasShadow="True"
@@ -72,11 +72,11 @@
                                 Text="Ad Soyad"
                                 FontSize="13"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource PrimaryDark}" />
+                                TextColor="{DynamicResource PrimaryDark}" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
                                 HeightRequest="52"
@@ -85,8 +85,8 @@
                                 <Entry
                                     x:Name="FullNameEntry"
                                     Placeholder="Adınızı girin"
-                                    TextColor="{StaticResource TextPrimary}"
-                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
+                                    PlaceholderColor="{DynamicResource TextMuted}"
                                     VerticalOptions="Center" />
                             </Frame>
                         </VerticalStackLayout>
@@ -98,11 +98,11 @@
                                 Text="E-posta"
                                 FontSize="13"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource PrimaryDark}" />
+                                TextColor="{DynamicResource PrimaryDark}" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
                                 HeightRequest="52"
@@ -112,8 +112,8 @@
                                     x:Name="EmailEntry"
                                     Placeholder="ornek@email.com"
                                     Keyboard="Email"
-                                    TextColor="{StaticResource TextPrimary}"
-                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
+                                    PlaceholderColor="{DynamicResource TextMuted}"
                                     VerticalOptions="Center" />
                             </Frame>
                         </VerticalStackLayout>
@@ -125,11 +125,11 @@
                                 Text="Şifre"
                                 FontSize="13"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource PrimaryDark}" />
+                                TextColor="{DynamicResource PrimaryDark}" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
                                 HeightRequest="52"
@@ -139,8 +139,8 @@
                                     x:Name="PasswordEntry"
                                     Placeholder="Şifre oluşturun"
                                     IsPassword="True"
-                                    TextColor="{StaticResource TextPrimary}"
-                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
+                                    PlaceholderColor="{DynamicResource TextMuted}"
                                     VerticalOptions="Center" />
                             </Frame>
                         </VerticalStackLayout>
@@ -152,11 +152,11 @@
                                 Text="Şifre Tekrar"
                                 FontSize="13"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource PrimaryDark}" />
+                                TextColor="{DynamicResource PrimaryDark}" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
                                 HeightRequest="52"
@@ -166,8 +166,8 @@
                                     x:Name="ConfirmPasswordEntry"
                                     Placeholder="Şifrenizi tekrar girin"
                                     IsPassword="True"
-                                    TextColor="{StaticResource TextPrimary}"
-                                    PlaceholderColor="{StaticResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
+                                    PlaceholderColor="{DynamicResource TextMuted}"
                                     VerticalOptions="Center" />
                             </Frame>
                         </VerticalStackLayout>

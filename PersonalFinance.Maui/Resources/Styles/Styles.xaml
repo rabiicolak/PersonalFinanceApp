@@ -6,18 +6,18 @@
 
     <!-- Sayfa Genel Stili -->
     <Style TargetType="ContentPage">
-        <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PageBackground}" />
     </Style>
 
     <!-- Label Genel Stili -->
     <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
     </Style>
 
     <!-- Button Genel Stili -->
     <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="15" />
@@ -28,8 +28,8 @@
 
     <!-- Entry Genel Stili -->
     <Style TargetType="Entry">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
-        <Setter Property="PlaceholderColor" Value="{StaticResource TextMuted}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource TextMuted}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="HeightRequest" Value="48" />
@@ -38,16 +38,16 @@
 
     <!-- Editor Genel Stili -->
     <Style TargetType="Editor">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
-        <Setter Property="PlaceholderColor" Value="{StaticResource TextMuted}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource TextMuted}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontSize" Value="15" />
     </Style>
 
     <!-- Picker Genel Stili -->
     <Style TargetType="Picker">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
-        <Setter Property="TitleColor" Value="{StaticResource TextMuted}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="TitleColor" Value="{DynamicResource TextMuted}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="HeightRequest" Value="48" />
@@ -55,7 +55,7 @@
 
     <!-- DatePicker Genel Stili -->
     <Style TargetType="DatePicker">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="HeightRequest" Value="48" />
@@ -64,18 +64,18 @@
 
     <!-- CheckBox Genel Stili -->
     <Style TargetType="CheckBox">
-        <Setter Property="Color" Value="{StaticResource Primary}" />
+        <Setter Property="Color" Value="{DynamicResource Primary}" />
     </Style>
 
     <!-- RadioButton Genel Stili -->
     <Style TargetType="RadioButton">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextPrimary}" />
         <Setter Property="FontSize" Value="14" />
     </Style>
 
     <!-- Frame Genel Kart Stili -->
     <Style TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBackground}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource CardBackground}" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="True" />
         <Setter Property="BorderColor" Value="Transparent" />
@@ -84,14 +84,14 @@
 
     <!-- ProgressBar Genel Stili -->
     <Style TargetType="ProgressBar">
-        <Setter Property="ProgressColor" Value="{StaticResource Primary}" />
+        <Setter Property="ProgressColor" Value="{DynamicResource Primary}" />
         <Setter Property="BackgroundColor" Value="{StaticResource Gray200}" />
         <Setter Property="HeightRequest" Value="8" />
     </Style>
 
     <!-- NavigationPage Genel Stili -->
     <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="BarBackgroundColor" Value="{DynamicResource Primary}" />
         <Setter Property="BarTextColor" Value="White" />
     </Style>
 

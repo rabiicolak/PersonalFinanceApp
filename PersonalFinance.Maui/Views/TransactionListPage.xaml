@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Tüm İşlemler"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{StaticResource PageBackground}">
+    BackgroundColor="{DynamicResource PageBackground}">
 
     <Grid
         RowDefinitions="Auto,Auto,*"
@@ -19,8 +19,8 @@
                 Grid.Column="0"
                 Text="←"
                 Clicked="OnBackClicked"
-                BackgroundColor="{StaticResource Secondary}"
-                TextColor="{StaticResource PrimaryDark}"
+                BackgroundColor="{DynamicResource Secondary}"
+                TextColor="{DynamicResource PrimaryDark}"
                 FontSize="20"
                 FontAttributes="Bold"
                 Padding="0"
@@ -39,19 +39,19 @@
                     Text="Tüm İşlemler"
                     FontSize="24"
                     FontAttributes="Bold"
-                    TextColor="{StaticResource PrimaryDark}" />
+                    TextColor="{DynamicResource PrimaryDark}" />
 
                 <Label
                     Text="Gelir ve gider hareketlerinizin detaylı listesi."
                     FontSize="13"
-                    TextColor="{StaticResource TextSecondary}" />
+                    TextColor="{DynamicResource TextSecondary}" />
             </VerticalStackLayout>
         </Grid>
 
         <!-- FİLTRE KARTI -->
         <Frame
             Grid.Row="1"
-            BackgroundColor="{StaticResource CardBackground}"
+            BackgroundColor="{DynamicResource CardBackground}"
             Padding="18"
             CornerRadius="24"
             HasShadow="True"
@@ -68,14 +68,14 @@
                         Text="İşlem Türü"
                         FontSize="13"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource TextSecondary}" />
+                        TextColor="{DynamicResource TextSecondary}" />
 
                     <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
 
                         <Frame
                             Grid.Column="0"
-                            BackgroundColor="{StaticResource Secondary}"
-                            BorderColor="{StaticResource BorderSoft}"
+                            BackgroundColor="{DynamicResource Secondary}"
+                            BorderColor="{DynamicResource BorderSoft}"
                             CornerRadius="16"
                             Padding="10,8"
                             HasShadow="False">
@@ -86,7 +86,7 @@
                                 Content="Tümü"
                                 IsChecked="True"
                                 FontSize="13"
-                                TextColor="{StaticResource TextPrimary}"
+                                TextColor="{DynamicResource TextPrimary}"
                                 CheckedChanged="OnFilterChanged" />
                         </Frame>
 
@@ -98,12 +98,12 @@
                             Padding="10,8"
                             HasShadow="False">
 
-                            <RadioButton
+                             <RadioButton
                                 x:Name="IncomeRadio"
                                 GroupName="FilterType"
                                 Content="Gelir"
                                 FontSize="13"
-                                TextColor="{StaticResource TextPrimary}"
+                                TextColor="#1E1B4B"
                                 CheckedChanged="OnFilterChanged" />
                         </Frame>
 
@@ -120,7 +120,7 @@
                                 GroupName="FilterType"
                                 Content="Gider"
                                 FontSize="13"
-                                TextColor="{StaticResource TextPrimary}"
+                                TextColor="#1E1B4B"
                                 CheckedChanged="OnFilterChanged" />
                         </Frame>
 
@@ -134,24 +134,26 @@
                         Text="Kategori"
                         FontSize="13"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource TextSecondary}" />
+                        TextColor="{DynamicResource TextSecondary}" />
 
                     <Frame
-                        BackgroundColor="{StaticResource InputBackground}"
-                        BorderColor="{StaticResource BorderSoft}"
+                        BackgroundColor="{DynamicResource InputBackground}"
+                        BorderColor="{DynamicResource BorderSoft}"
                         CornerRadius="16"
                         Padding="14,0"
-                        HeightRequest="52"
+                        HeightRequest="56"
                         HasShadow="False">
 
                         <Picker
                             x:Name="CategoryFilterPicker"
                             Title="Kategori seçin"
-                            TitleColor="{StaticResource TextMuted}"
-                            TextColor="{StaticResource TextPrimary}"
+                            TitleColor="{DynamicResource TextMuted}"
+                            TextColor="{DynamicResource TextPrimary}"
                             BackgroundColor="Transparent"
                             SelectedIndexChanged="OnFilterChanged"
-                            VerticalOptions="Center">
+                            VerticalOptions="Center"
+                            HorizontalOptions="Fill"
+                            HeightRequest="56">
 
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
@@ -194,13 +196,13 @@
                 <Label
                     Text="Filtrelere uygun işlem bulunamadı."
                     FontSize="14"
-                    TextColor="{StaticResource TextSecondary}"
+                    TextColor="{DynamicResource TextSecondary}"
                     HorizontalOptions="Center" />
 
                 <Label
                     Text="Filtreleri değiştirerek tekrar deneyin."
                     FontSize="12"
-                    TextColor="{StaticResource TextMuted}"
+                    TextColor="{DynamicResource TextMuted}"
                     HorizontalOptions="Center" />
             </VerticalStackLayout>
 
@@ -220,7 +222,7 @@
                     <DataTemplate>
 
                         <Frame
-                            BackgroundColor="{StaticResource CardBackground}"
+                            BackgroundColor="{DynamicResource CardBackground}"
                             Padding="16,14"
                             CornerRadius="22"
                             HasShadow="True"
@@ -236,7 +238,7 @@
                                     HeightRequest="44"
                                     WidthRequest="44"
                                     CornerRadius="22"
-                                    BackgroundColor="{StaticResource Secondary}"
+                                    BackgroundColor="{DynamicResource Secondary}"
                                     Padding="0"
                                     HasShadow="False"
                                     BorderColor="Transparent"
@@ -259,12 +261,12 @@
                                         Text="{Binding Title}"
                                         FontSize="14"
                                         FontAttributes="Bold"
-                                        TextColor="{StaticResource TextPrimary}" />
+                                        TextColor="{DynamicResource TextPrimary}" />
 
                                     <Label
                                         Text="{Binding DateFormatted}"
                                         FontSize="11"
-                                        TextColor="{StaticResource TextSecondary}" />
+                                        TextColor="{DynamicResource TextSecondary}" />
                                 </VerticalStackLayout>
 
                                 <!-- Tutar -->
@@ -283,7 +285,7 @@
                                     <Label
                                         Text="{Binding Category}"
                                         FontSize="10"
-                                        TextColor="{StaticResource TextMuted}"
+                                        TextColor="{DynamicResource TextMuted}"
                                         HorizontalTextAlignment="End" />
                                 </VerticalStackLayout>
 

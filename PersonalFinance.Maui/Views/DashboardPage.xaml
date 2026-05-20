@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="PersonalFinance.Maui.Views.DashboardPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Dashboard"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{StaticResource PageBackground}">
+    BackgroundColor="{DynamicResource PageBackground}">
 
     <ScrollView>
         <VerticalStackLayout
@@ -14,29 +14,44 @@
             MaximumWidthRequest="520"
             HorizontalOptions="Center">
 
-            <Grid ColumnDefinitions="*,Auto" Margin="0,8,0,0">
+            <!-- Welcome/Header Section -->
+            <Grid x:Name="WelcomeSection" ColumnDefinitions="*,Auto" Margin="0,8,0,0" Opacity="0">
                 <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
                     <Label
                         x:Name="WelcomeLabel"
                         Text="Merhaba! 👋"
                         FontSize="24"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource PrimaryDark}" />
+                        TextColor="{DynamicResource PrimaryDark}" />
 
                     <Label
                         Text="Finansal durumunuz kontrol altında."
                         FontSize="13"
-                        TextColor="{StaticResource TextSecondary}" />
+                        TextColor="{DynamicResource TextSecondary}" />
                 </VerticalStackLayout>
 
                 <HorizontalStackLayout Grid.Column="1" Spacing="8" VerticalOptions="Center">
                     <Button
+                        x:Name="ThemeToggleButton"
+                        Text="🌙 Tema"
+                        Clicked="OnThemeToggleClicked"
+                        BackgroundColor="{DynamicResource Secondary}"
+                        TextColor="{DynamicResource PrimaryDark}"
+                        BorderColor="{DynamicResource BorderSoft}"
+                        BorderWidth="1.5"
+                        CornerRadius="14"
+                        FontSize="11"
+                        FontAttributes="Bold"
+                        Padding="12,4"
+                        HeightRequest="36" />
+
+                    <Button
                         Text="Şifre"
                         Clicked="OnChangePasswordClicked"
-                        BackgroundColor="{StaticResource Secondary}"
-                        TextColor="{StaticResource PrimaryDark}"
-                        BorderColor="{StaticResource BorderSoft}"
-                        BorderWidth="1"
+                        BackgroundColor="{DynamicResource Secondary}"
+                        TextColor="{DynamicResource PrimaryDark}"
+                        BorderColor="{DynamicResource BorderSoft}"
+                        BorderWidth="1.5"
                         CornerRadius="14"
                         FontSize="11"
                         FontAttributes="Bold"
@@ -47,9 +62,9 @@
                         Text="Çıkış"
                         Clicked="OnLogoutClicked"
                         BackgroundColor="#FEE2E2"
-                        TextColor="{StaticResource ExpenseColor}"
+                        TextColor="{DynamicResource ExpenseColor}"
                         BorderColor="#FCA5A5"
-                        BorderWidth="1"
+                        BorderWidth="1.5"
                         CornerRadius="14"
                         FontSize="11"
                         FontAttributes="Bold"
@@ -58,12 +73,20 @@
                 </HorizontalStackLayout>
             </Grid>
 
+            <!-- Premium Total Balance Card with Gradient -->
             <Frame
+                x:Name="BalanceCard"
                 Padding="22"
                 CornerRadius="28"
                 HasShadow="True"
                 BorderColor="Transparent"
-                BackgroundColor="{StaticResource Primary}">
+                Opacity="0">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#7C3AED" Offset="0.0" />
+                        <GradientStop Color="#4C1D95" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
 
                 <VerticalStackLayout Spacing="14">
                     <Grid ColumnDefinitions="*,Auto">
@@ -108,14 +131,15 @@
                 </VerticalStackLayout>
             </Frame>
 
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+            <!-- Income / Expense Grid -->
+            <Grid x:Name="StatsGrid" ColumnDefinitions="*,*" ColumnSpacing="14" Opacity="0">
                 <Frame
                     Grid.Column="0"
                     Padding="18"
                     CornerRadius="22"
                     HasShadow="True"
-                    BorderColor="Transparent"
-                    BackgroundColor="{StaticResource CardBackground}">
+                    BorderColor="{DynamicResource BorderSoft}"
+                    BackgroundColor="{DynamicResource CardBackground}">
 
                     <VerticalStackLayout Spacing="8">
                         <Frame
@@ -138,7 +162,7 @@
                         <Label
                             Text="Toplam Gelir"
                             FontSize="12"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontAttributes="Bold" />
 
                         <Label
@@ -146,7 +170,7 @@
                             Text="0,00 ₺"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="{StaticResource IncomeColor}" />
+                            TextColor="{DynamicResource IncomeColor}" />
                     </VerticalStackLayout>
                 </Frame>
 
@@ -155,8 +179,8 @@
                     Padding="18"
                     CornerRadius="22"
                     HasShadow="True"
-                    BorderColor="Transparent"
-                    BackgroundColor="{StaticResource CardBackground}">
+                    BorderColor="{DynamicResource BorderSoft}"
+                    BackgroundColor="{DynamicResource CardBackground}">
 
                     <VerticalStackLayout Spacing="8">
                         <Frame
@@ -179,7 +203,7 @@
                         <Label
                             Text="Toplam Gider"
                             FontSize="12"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontAttributes="Bold" />
 
                         <Label
@@ -187,31 +211,32 @@
                             Text="0,00 ₺"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="{StaticResource ExpenseColor}" />
+                            TextColor="{DynamicResource ExpenseColor}" />
                     </VerticalStackLayout>
                 </Frame>
             </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" Margin="0,4,0,0">
+            <!-- Recent Transactions Header -->
+            <Grid x:Name="RecentTransactionsHeader" ColumnDefinitions="*,Auto" Margin="0,4,0,0" Opacity="0">
                 <VerticalStackLayout Grid.Column="0" Spacing="2">
                     <Label
-                        Text="Son İşlemler"
+                        Text="Bu Ayki Son İşlemler"
                         FontSize="18"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource PrimaryDark}" />
+                        TextColor="{DynamicResource PrimaryDark}" />
 
                     <Label
-                        Text="En son eklediğiniz gelir ve giderler"
+                        Text="Bu ay eklediğiniz gelir ve giderler"
                         FontSize="12"
-                        TextColor="{StaticResource TextSecondary}" />
+                        TextColor="{DynamicResource TextSecondary}" />
                 </VerticalStackLayout>
 
                 <Button
                     Grid.Column="1"
                     Text="Tümünü Gör"
                     Clicked="OnAllTransactionsClicked"
-                    BackgroundColor="{StaticResource Secondary}"
-                    TextColor="{StaticResource PrimaryDark}"
+                    BackgroundColor="{DynamicResource Secondary}"
+                    TextColor="{DynamicResource PrimaryDark}"
                     FontSize="11"
                     FontAttributes="Bold"
                     CornerRadius="14"
@@ -220,15 +245,16 @@
                     VerticalOptions="Center" />
             </Grid>
 
-            <VerticalStackLayout x:Name="TransactionsListLayout" Spacing="10">
+            <!-- Recent Transactions List -->
+            <VerticalStackLayout x:Name="TransactionsListLayout" Spacing="10" Opacity="0">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <Frame
-                            BackgroundColor="{StaticResource CardBackground}"
+                            BackgroundColor="{DynamicResource CardBackground}"
                             Padding="16,13"
                             CornerRadius="20"
                             HasShadow="True"
-                            BorderColor="Transparent">
+                            BorderColor="{DynamicResource BorderSoft}">
 
                             <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
                                 <Frame
@@ -236,7 +262,7 @@
                                     HeightRequest="42"
                                     WidthRequest="42"
                                     CornerRadius="21"
-                                    BackgroundColor="{StaticResource Secondary}"
+                                    BackgroundColor="{DynamicResource Secondary}"
                                     Padding="0"
                                     HasShadow="False"
                                     BorderColor="Transparent"
@@ -254,12 +280,12 @@
                                         Text="{Binding Title}"
                                         FontSize="14"
                                         FontAttributes="Bold"
-                                        TextColor="{StaticResource TextPrimary}" />
+                                        TextColor="{DynamicResource TextPrimary}" />
 
                                     <Label
                                         Text="{Binding DateFormatted}"
                                         FontSize="11"
-                                        TextColor="{StaticResource TextSecondary}" />
+                                        TextColor="{DynamicResource TextSecondary}" />
                                 </VerticalStackLayout>
 
                                 <Label
@@ -275,12 +301,14 @@
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
 
+            <!-- Empty State View -->
             <VerticalStackLayout
                 x:Name="EmptyViewLayout"
                 Padding="36"
                 Spacing="10"
                 HorizontalOptions="Center"
-                IsVisible="False">
+                IsVisible="False"
+                Opacity="0">
 
                 <Label
                     Text="💸"
@@ -290,21 +318,26 @@
                 <Label
                     Text="Henüz bir işlem bulunmuyor."
                     FontSize="13"
-                    TextColor="{StaticResource TextSecondary}"
+                    TextColor="{DynamicResource TextSecondary}"
                     HorizontalOptions="Center" />
 
                 <Label
                     Text="İlk gelir veya gider kaydınızı ekleyerek başlayın."
                     FontSize="12"
-                    TextColor="{StaticResource TextMuted}"
+                    TextColor="{DynamicResource TextMuted}"
                     HorizontalOptions="Center" />
             </VerticalStackLayout>
 
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,16">
+            <!-- Bottom Action Buttons -->
+            <Grid x:Name="ActionButtonsGrid" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,16" Opacity="0">
                 <Button
                     Grid.Column="0"
                     Text="+ Yeni İşlem"
                     Clicked="OnAddTransactionClicked"
+                    BackgroundColor="{DynamicResource Primary}"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="14"
                     HeightRequest="52"
                     CornerRadius="16" />
 
@@ -312,9 +345,9 @@
                     Grid.Column="1"
                     Text="📊 İstatistikler"
                     Clicked="OnStatisticsClicked"
-                    BackgroundColor="White"
-                    TextColor="{StaticResource PrimaryDark}"
-                    BorderColor="{StaticResource BorderSoft}"
+                    BackgroundColor="{DynamicResource Secondary}"
+                    TextColor="{DynamicResource PrimaryDark}"
+                    BorderColor="{DynamicResource BorderSoft}"
                     BorderWidth="1.5"
                     FontAttributes="Bold"
                     FontSize="14"

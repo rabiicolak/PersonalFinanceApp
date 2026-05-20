@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Yeni İşlem Ekle"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{StaticResource PageBackground}">
+    BackgroundColor="{DynamicResource PageBackground}">
 
     <ScrollView>
         <VerticalStackLayout
@@ -19,8 +19,8 @@
                     Grid.Column="0"
                     Text="←"
                     Clicked="OnBackClicked"
-                    BackgroundColor="{StaticResource Secondary}"
-                    TextColor="{StaticResource PrimaryDark}"
+                    BackgroundColor="{DynamicResource Secondary}"
+                    TextColor="{DynamicResource PrimaryDark}"
                     FontSize="20"
                     FontAttributes="Bold"
                     Padding="0"
@@ -34,17 +34,17 @@
                         Text="Yeni İşlem Ekle"
                         FontSize="24"
                         FontAttributes="Bold"
-                        TextColor="{StaticResource PrimaryDark}" />
+                        TextColor="{DynamicResource PrimaryDark}" />
 
                     <Label
                         Text="Gelir, gider veya tasarruf hareketinizi kaydedin."
                         FontSize="13"
-                        TextColor="{StaticResource TextSecondary}" />
+                        TextColor="{DynamicResource TextSecondary}" />
                 </VerticalStackLayout>
             </Grid>
 
             <Frame
-                BackgroundColor="{StaticResource CardBackground}"
+                BackgroundColor="{DynamicResource CardBackground}"
                 Padding="22"
                 CornerRadius="24"
                 HasShadow="True"
@@ -56,7 +56,7 @@
                         <Label
                             Text="İşlem Türü *"
                             FontSize="13"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontAttributes="Bold" />
 
                         <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
@@ -72,7 +72,7 @@
                                     x:Name="IncomeRadio"
                                     GroupName="TransactionType"
                                     Content="Gelir"
-                                    TextColor="{StaticResource TextPrimary}"
+                                    TextColor="#1E1B4B"
                                     FontSize="14"
                                     VerticalOptions="Center" />
                             </Frame>
@@ -89,7 +89,7 @@
                                     x:Name="ExpenseRadio"
                                     GroupName="TransactionType"
                                     Content="Gider"
-                                    TextColor="{StaticResource TextPrimary}"
+                                    TextColor="#1E1B4B"
                                     FontSize="14"
                                     VerticalOptions="Center" />
                             </Frame>
@@ -100,12 +100,12 @@
                         <Label
                             Text="Başlık *"
                             FontSize="13"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontAttributes="Bold" />
 
                         <Frame
-                            BackgroundColor="{StaticResource InputBackground}"
-                            BorderColor="{StaticResource BorderSoft}"
+                            BackgroundColor="{DynamicResource InputBackground}"
+                            BorderColor="{DynamicResource BorderSoft}"
                             CornerRadius="16"
                             Padding="14,0"
                             HeightRequest="52"
@@ -114,8 +114,8 @@
                             <Entry
                                 x:Name="TitleEntry"
                                 Placeholder="Örn. Market alışverişi"
-                                TextColor="{StaticResource TextPrimary}"
-                                PlaceholderColor="{StaticResource TextMuted}"
+                                TextColor="{DynamicResource TextPrimary}"
+                                PlaceholderColor="{DynamicResource TextMuted}"
                                 VerticalOptions="Center" />
                         </Frame>
                     </VerticalStackLayout>
@@ -124,12 +124,12 @@
                         <Label
                             Text="Tutar (₺) *"
                             FontSize="13"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontAttributes="Bold" />
 
                         <Frame
-                            BackgroundColor="{StaticResource InputBackground}"
-                            BorderColor="{StaticResource BorderSoft}"
+                            BackgroundColor="{DynamicResource InputBackground}"
+                            BorderColor="{DynamicResource BorderSoft}"
                             CornerRadius="16"
                             Padding="14,0"
                             HeightRequest="52"
@@ -139,8 +139,8 @@
                                 x:Name="AmountEntry"
                                 Placeholder="0,00"
                                 Keyboard="Numeric"
-                                TextColor="{StaticResource TextPrimary}"
-                                PlaceholderColor="{StaticResource TextMuted}"
+                                TextColor="{DynamicResource TextPrimary}"
+                                PlaceholderColor="{DynamicResource TextMuted}"
                                 VerticalOptions="Center" />
                         </Frame>
                     </VerticalStackLayout>
@@ -150,24 +150,26 @@
                             <Label
                                 Text="Kategori"
                                 FontSize="13"
-                                TextColor="{StaticResource TextSecondary}"
+                                TextColor="{DynamicResource TextSecondary}"
                                 FontAttributes="Bold" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
-                                HeightRequest="52"
+                                HeightRequest="56"
                                 HasShadow="False">
 
                                 <Picker
                                     x:Name="CategoryPicker"
                                     Title="Kategori"
-                                    TitleColor="{StaticResource TextMuted}"
-                                    TextColor="{StaticResource TextPrimary}"
+                                    TitleColor="{DynamicResource TextMuted}"
+                                    TextColor="{DynamicResource TextPrimary}"
                                     BackgroundColor="Transparent"
-                                    VerticalOptions="Center">
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Fill"
+                                    HeightRequest="56">
                                     <Picker.ItemsSource>
                                         <x:Array Type="{x:Type x:String}">
                                             <x:String>Market</x:String>
@@ -186,30 +188,32 @@
                             <Label
                                 Text="Tarih"
                                 FontSize="13"
-                                TextColor="{StaticResource TextSecondary}"
+                                TextColor="{DynamicResource TextSecondary}"
                                 FontAttributes="Bold" />
 
                             <Frame
-                                BackgroundColor="{StaticResource InputBackground}"
-                                BorderColor="{StaticResource BorderSoft}"
+                                BackgroundColor="{DynamicResource InputBackground}"
+                                BorderColor="{DynamicResource BorderSoft}"
                                 CornerRadius="16"
                                 Padding="14,0"
-                                HeightRequest="52"
+                                HeightRequest="56"
                                 HasShadow="False">
 
                                 <DatePicker
                                     x:Name="TransactionDatePicker"
                                     Format="dd.MM.yyyy"
-                                    TextColor="{StaticResource TextPrimary}"
+                                    TextColor="{DynamicResource TextPrimary}"
                                     BackgroundColor="Transparent"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Fill"
+                                    HeightRequest="56" />
                             </Frame>
                         </VerticalStackLayout>
                     </Grid>
 
                     <Frame
-                        BackgroundColor="{StaticResource Secondary}"
-                        BorderColor="{StaticResource BorderSoft}"
+                        BackgroundColor="{DynamicResource Secondary}"
+                        BorderColor="{DynamicResource BorderSoft}"
                         CornerRadius="16"
                         Padding="12,8"
                         HasShadow="False">
@@ -217,19 +221,19 @@
                         <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
                             <CheckBox
                                 x:Name="IsSavingCheckBox"
-                                Color="{StaticResource Primary}"
+                                Color="{DynamicResource Primary}"
                                 VerticalOptions="Center" />
 
                             <VerticalStackLayout Spacing="1" VerticalOptions="Center">
                                 <Label
                                     Text="Tasarruf işlemi mi?"
-                                    TextColor="{StaticResource TextPrimary}"
+                                    TextColor="{DynamicResource TextPrimary}"
                                     FontSize="14"
                                     FontAttributes="Bold" />
 
                                 <Label
                                     Text="Bu işlem tasarruf hareketi olarak işaretlenir."
-                                    TextColor="{StaticResource TextSecondary}"
+                                    TextColor="{DynamicResource TextSecondary}"
                                     FontSize="11" />
                             </VerticalStackLayout>
                         </HorizontalStackLayout>
@@ -239,12 +243,12 @@
                         <Label
                             Text="Açıklama"
                             FontSize="13"
-                            TextColor="{StaticResource TextSecondary}"
+                            TextColor="{DynamicResource TextSecondary}"
                             FontAttributes="Bold" />
 
                         <Frame
-                            BackgroundColor="{StaticResource InputBackground}"
-                            BorderColor="{StaticResource BorderSoft}"
+                            BackgroundColor="{DynamicResource InputBackground}"
+                            BorderColor="{DynamicResource BorderSoft}"
                             CornerRadius="16"
                             Padding="14,8"
                             HeightRequest="110"
@@ -253,8 +257,8 @@
                             <Editor
                                 x:Name="DescriptionEditor"
                                 Placeholder="İşlem detaylarını yazabilirsiniz..."
-                                TextColor="{StaticResource TextPrimary}"
-                                PlaceholderColor="{StaticResource TextMuted}"
+                                TextColor="{DynamicResource TextPrimary}"
+                                PlaceholderColor="{DynamicResource TextMuted}"
                                 VerticalOptions="Fill" />
                         </Frame>
                     </VerticalStackLayout>
